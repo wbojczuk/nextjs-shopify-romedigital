@@ -1,0 +1,200 @@
+.productPage{
+    display: inline-flex;
+    width: 60%;
+    padding: 4vw 20%;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+}
+
+.images{
+    width: 55%;
+    position: relative;
+    display: inline-block;
+}
+
+.mainImg{
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+}
+
+.imgCarousel{
+    position: relative;
+    width: 100%;
+    height: 10vw;
+}
+.imgCarousel>div{
+    width: 100%;
+    height: 100%;
+}
+.imgCarousel img{
+    height: 10vw;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    user-select: none;
+    cursor: pointer;
+}
+
+.content{
+    width: 40%;
+    --vertical-padding: 0.5vw;
+}
+
+.title{
+    font-family: var(--secondary-font);
+    font-size: 3rem;
+    margin-top: 2vw !important;
+    color: var(--primary-color);
+}
+
+.description{
+    font-size: 1.3rem;
+    margin-top: 1vw;
+    font-weight: 400;
+    line-height: 2rem;
+}
+
+.price{
+    display: inline-block;
+    font-weight: 400;
+    font-size: 1.8rem;
+    margin-top: 1vw;
+    color: var(--primary-color);
+    font-weight: 500;
+    padding-bottom: 2vw;
+}
+
+.oldPrice{
+    margin-left: 0.2vw;
+    font-size: 1.4rem;
+    text-decoration: line-through;
+    opacity: 0.8;
+    
+    
+}
+
+/* Select Input Styles */
+
+.content select{
+    position: relative;
+    width: 100% !important;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+}
+.content div[data-class="select"]{
+    position: relative;
+    display: inline-block;
+    width: 60%;
+}
+.content div[data-class="select"]::after{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    right: 2%;
+    top:25%;
+    height: 50%;
+    aspect-ratio: 1/1;
+    background-image: url("/icons/caret-down.svg");
+    pointer-events: none;
+    background-size: 100%;
+    background-position: center;
+    transition: 0.3s transform;
+}
+
+.content div[data-class="select"]:has(select[data-isopen="true"])::after{
+    transform: rotate(180deg);
+}
+
+.content select{
+    display: inline-block;
+    position: relative;
+    width: 50%;
+    padding: 0.8vw 5% !important;
+    margin-top: 0.2vw;
+    margin-bottom: var(--vertical-padding) 0;
+    border: 1px solid var(--disabled-grey) !important;
+    outline: 1px solid transparent !important;
+    border-radius: 10px;
+    color: var(--primary-text-color);
+}
+
+.content input:not(input[type='submit']):not(input[type='hidden']):focus, .content textarea:focus, .content select:focus, .numberInput button:focus{
+    border: 1px solid var(--primary-color) !important;
+    outline: 1px solid var(--primary-color) !important;
+}
+
+.content label{
+    padding-top: 1.5vw;
+    display: inline-block;
+    width: 100%;
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding-bottom: 0.5vw;
+
+}
+
+.content label + input[type='text'], .content label + textarea, .content label + select, .content div[data-class='half-input'] label + input:not(input[type='submit']):not(input[type='hidden']){
+    margin:0;
+}
+
+.numberInput input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+  
+  .numberInput input[type=number]::-webkit-inner-spin-button,
+  .numberInput input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+  
+  .numberInput {
+    
+    display: inline-flex;
+  }
+  
+  .numberInput,
+  .numberInput * {
+    box-sizing: border-box;
+  }
+  
+  .numberInput button {
+    outline:none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    margin: 0;
+    position: relative;
+    border: 1px solid var(--disabled-grey) !important;
+    outline: 1px solid transparent !important;
+  }
+  
+  .numberInput button:after {
+    display: inline-block;
+    position: absolute;
+    font-weight:500;
+    content: '-';
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+  }
+  .numberInput button.plus:after {
+    transform: translate(-50%, -50%);
+    content: '+';
+  }
+  
+  .numberInput input[type=number] {
+    font-size: 1.2rem;
+    border: 1px solid var(--disabled-grey) !important;
+    outline: 1px solid transparent !important;
+    color: var(--primary-text-color);
+    text-align: center;
+  }

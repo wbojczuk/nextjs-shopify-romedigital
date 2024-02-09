@@ -1,0 +1,6 @@
+.listings{
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 80%;
+    padding: 1vw 10%;
+}

@@ -1,0 +1,26 @@
+{
+  "name": "next-shopify",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "update": "echo 'Enter Commit Message:' && read msg && git checkout main && git add -A && git commit -m \"$msg\" && git push origin main"
+  },
+  "dependencies": {
+    "graphql-request": "^6.1.0",
+    "next": "14.1.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-multi-carousel": "^2.8.4",
+    "shopify-buy": "^2.21.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5"
+  }
+}
