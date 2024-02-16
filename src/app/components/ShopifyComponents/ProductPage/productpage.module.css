@@ -61,10 +61,10 @@
     display: inline-block;
     font-weight: 400;
     font-size: 1.8rem;
-    margin-top: 1vw;
+    margin-top: 1.5vw;
     color: var(--primary-color);
     font-weight: 500;
-    padding-bottom: 2vw;
+    padding-bottom: 0vw;
 }
 
 .oldPrice{
@@ -72,8 +72,31 @@
     font-size: 1.4rem;
     text-decoration: line-through;
     opacity: 0.8;
-    
-    
+}
+
+.optionInput{
+    visibility: hidden;
+}
+
+.optionLabel{
+    padding: 0.5vw 1.5vw !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    margin: 0;
+    cursor: pointer;
+    border: 1px solid var(--primary-text-color);
+}
+
+.optionInput:checked+.optionLabel{
+    background-color: var(--primary-color);
+    color: var(--secondary-text-color);
+    border-color: var(--primary-color);
+}
+
+.optionElem{
+    display: inline-block;
 }
 
 /* Select Input Styles */
@@ -127,7 +150,7 @@
     outline: 1px solid var(--primary-color) !important;
 }
 
-.content label{
+.content label:not(.optionLabel){
     padding-top: 1.5vw;
     display: inline-block;
     width: 100%;
@@ -153,7 +176,6 @@
   }
   
   .numberInput {
-    
     display: inline-flex;
   }
   
@@ -169,12 +191,12 @@
     border: none;
     align-items: center;
     justify-content: center;
-    width: 3rem;
-    height: 3rem;
+    width: 3vw;
+    height: 3vw;
     cursor: pointer;
     margin: 0;
     position: relative;
-    border: 1px solid var(--disabled-grey) !important;
+    border: 1px solid var(--disabled-grey);
     outline: 1px solid transparent !important;
   }
   
@@ -186,15 +208,42 @@
     transform: translate(-50%, -50%);
     font-size: 1.5rem;
   }
+
   .numberInput button.plus:after {
     transform: translate(-50%, -50%);
     content: '+';
+  }
+
+  .sizeOptionInput{
+
+  }
+
+  .colorOptionInput{
+
+  }
+
+  .minus{
+    border-right: none !important;
+  }
+
+  .elemDisabled{
+    color: var(--disabled-grey) !important;
+    pointer-events: none;
+    border-color: var(--disabled-grey);
+  }
+
+  .plus{
+    border-left: none !important;
   }
   
   .numberInput input[type=number] {
     font-size: 1.2rem;
     border: 1px solid var(--disabled-grey) !important;
+    border-left: none !important;
+    border-right: none !important;
     outline: 1px solid transparent !important;
     color: var(--primary-text-color);
     text-align: center;
+    width: 3vw;
+    height: 3vw;
   }

@@ -4,23 +4,33 @@ import { ShopContext } from "@/app/shopify/shopContext"
 import styles from "./addtocartbutton.module.css"
 
 
-export default function AddToCartButton(variantID: string, qty: number) {
+export default function AddToCartButton(props:{variantID: string, qty: number, available: boolean, currentSize: string, currentColor: string}) {
+
+  const buttonRef: any = useRef()
     const {addItemToCheckout} = useContext(ShopContext)
     const [addingState, setAddingState] = useState(false)
     const adding: any = useRef()
     adding.current = false;
 
     async function buttonHandler(evt: any){
-        if(!adding.current){
+      if(props.currentColor != "unselected"){
+        if(props.currentSize != "unselected"){
+          if(!adding.current){
             setAddingState(true)
             adding.current = true;
-            await addItemToCheckout
+            await addItemToCheckout(props.variantID, props.qty)
             adding.current = false;
             setAddingState(false)
+          }
+        }else{
+          alert("Select a size")
         }
+      }else{
+        alert("Select a color")
+      }
     }
 
   return (
-    <button className={`${styles.button} ${(addingState) ? styles.adding : ""}`} onClick={buttonHandler}>Add to cart</button>
+    <button ref={buttonRef} className={`${styles.button} ${(addingState) ? styles.adding : ""} ${(props.available) ? "" : styles.soldOut}`} onClick={(props.available) ? buttonHandler : ()=>{}}>{(props.available) ? "Add to cart" : "Sold out"}</button>
   )
 }

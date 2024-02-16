@@ -1,0 +1,27 @@
+.button{
+    width: 100%;
+    background-color: var(--primary-color);
+    border: none;
+    font-size: 1.5rem;
+    font-family: var(--secondary-font);
+    color: var(--secondary-text-color);
+    padding: 0.5vw 0;
+    margin: 1.5vw 0;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: 0.3s filter;
+}
+
+.button:not(.soldOut):hover{
+    filter: brightness(80%);
+}
+
+.button.soldOut{
+    background-color: var(--disabled-grey);
+    cursor:not-allowed;
+}
+
+.button.adding{
+    background-color: var(--disabled-grey);
+    cursor:not-allowed;
+}

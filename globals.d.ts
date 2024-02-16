@@ -22,17 +22,32 @@ interface productType{
     description: string,
     handle: string,
     variants: variantType[],
+    options: optionType[],
     id: string,
     title: string,
     options: [],
     images: imageType[]
 }
 
+interface selectedOptionType {
+    name: string,
+    value: string
+}
+
+interface optionType{
+    id: string,
+    name: string,
+    values: optionValueType[]
+}
+
+interface optionValueType {value: string}
+
 interface variantType{
             price: {
                 amount: string,
                 currencyCode: string
             },
+            selectedOptions: selectedOptionType[],
             compareAtPrice: {
                 amount: string,
                 currencyCode: string
