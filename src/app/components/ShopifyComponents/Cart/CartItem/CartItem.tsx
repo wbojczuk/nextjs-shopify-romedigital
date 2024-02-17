@@ -58,9 +58,10 @@ export default function CartItem(props: cartItemProps) {
                 //@ts-ignore
                 evt.currentTarget.parentNode.querySelector('input[type=number]').stepUp(); qtyHandler()}}  className={styles.plus}></button>
             </div>
+            <div className={styles.price}>{formatCurrency(props.variant.price.amount, props.variant.price.currencyCode)}</div>
         </div>
 
-        <div className={styles.price}>{formatCurrency((props.quantity * parseFloat(props.variant.price.amount)), props.variant.price.currencyCode)}</div>
+        
 
     </div>
     </>

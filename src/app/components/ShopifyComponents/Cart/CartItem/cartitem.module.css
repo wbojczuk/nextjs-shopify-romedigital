@@ -23,7 +23,7 @@
 
 .text{
     display: inline-block;
-    width: 40%;
+    width: 50%;
 }
 
 .title{
@@ -115,7 +115,7 @@
   }
 
   .price{
+    padding-top: 1vw;
     width: 100%;
-    padding-right: 2vw;
     text-align: right;
   }

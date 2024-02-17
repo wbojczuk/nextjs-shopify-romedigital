@@ -80,9 +80,12 @@ export default function Cart() {
             <div className={styles.cartContent}>
                 {(isUpdating) && <div className={styles.updating}></div>}
                 {lineItemElems}
+                <div className={styles.payment}>
                 <div className={styles.divider}></div>
-                <h3 className={styles.subtotal}>Subtotal: {subtotal}</h3>
+                <h3 className={styles.subtotal}><span>Subtotal:</span><span>{subtotal}</span></h3>
             </div>
+            </div>
+            
         </div>
     </>
   )

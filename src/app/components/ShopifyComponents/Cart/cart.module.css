@@ -84,3 +84,21 @@
     background-color: rgba(0,0,0,0.5);
     z-index: 998;
   }
+  .payment{
+    display: inline-block;
+    width: 80%;
+    margin: 0 10%;
+  }
+  .divider{
+    margin: 1vw 0;
+    background-color: black;
+    height: 2px
+  }
+
+  .subtotal{
+    font-weight: 500;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
