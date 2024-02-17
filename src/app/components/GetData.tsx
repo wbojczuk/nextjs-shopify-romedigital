@@ -9,6 +9,8 @@ export default function GetData() {
 
   return (
     <>
+    
+      
       <ProductListings products={products} />
     </>
   )

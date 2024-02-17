@@ -4,6 +4,8 @@ import { Oswald, Roboto } from 'next/font/google'
 import Script from 'next/script';
 import "react-multi-carousel/lib/styles.css";
 import "./globals.css"
+import AppWrapper from './components/AppWrapper';
+import Cart from './components/ShopifyComponents/Cart/Cart';
 
 // BUTTON STYLES - .main-button
 
@@ -12,7 +14,7 @@ const primaryFont = Roboto({ subsets: ['latin'], weight: ["100", "300", "400", "
 const secondaryFont = Oswald({ subsets: ['latin'], weight: ["300", "500", "700"], display: "swap", variable: "--secondary-font" })
 
 export const metadata: Metadata = {
-  title: 'Template Site Title',
+  title: 'Next + Shopify',
   description: 'Template Site Desc'
 }
 
@@ -36,8 +38,13 @@ export default function RootLayout({
         `}
       </Script>
 
-
-        {children}
+        
+        <AppWrapper elems={<>
+          <div style={{display: "flex",justifyContent: "flex-end", alignItems: "center", padding: "2vw"}}>
+            <Cart />
+          </div>
+          {children}
+        </>} />
 
         </body>
     </html>

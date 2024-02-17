@@ -89,6 +89,10 @@
     border: 1px solid var(--primary-text-color);
 }
 
+.elemDisabled .optionLabel{
+    border-color: var(--disabled-grey);
+}
+
 .optionInput:checked+.optionLabel{
     background-color: var(--primary-color);
     color: var(--secondary-text-color);

@@ -6,9 +6,9 @@ import { ShopContext } from "@/app/shopify/shopContext";
 import Carousel from "react-multi-carousel";
 import { breakpoints } from "./carouselBreakpoints";
 
+
 export default function ProductPage({productHandle} : {productHandle: string}) {
 
-  const selectRef: any = useRef()
   const isSelectOpen: any = useRef()
   const qtyElem: any = useRef()
   const sizeElems: any = useRef() 
@@ -94,7 +94,13 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
         setImageData(productData.images)
         setMainImg(productData.variants[0].image)
         setVariants(productData.variants)
-        setCurrentVariant(0)
+        let tempCurrentVariant = 0
+        for(let i = productData.variants.length - 1; i >= 0 ; --i){
+          if(productData.variants[i].available){
+            tempCurrentVariant = i
+          }
+        }
+        setCurrentVariant(tempCurrentVariant)
         
         let isVariantsTemp = false
         productData.variants.forEach((variant, i)=>{
@@ -125,8 +131,6 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
         sizeElems.current = document.querySelectorAll(`.${styles.sizeOptionInput}`)
 
         colorElems.current = document.querySelectorAll(`.${styles.colorOptionInput}`)
-
-        console.log(productData)
       }
         
       

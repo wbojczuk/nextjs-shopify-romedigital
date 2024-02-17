@@ -66,6 +66,31 @@ class ShopProvider extends Component {
     this.setState({ checkout: checkout });
     console.log("added", checkout);
   };
+  removeLineItem = async (checkoutItemId) => {
+    const lineItemsToRemove = [
+      checkoutItemId
+    ];
+    const checkout = await client.checkout.removeLineItems(
+      this.state.checkout.id,
+      lineItemsToRemove
+    );
+    this.setState({ checkout: checkout });
+    console.log("removed", checkout);
+  };
+  updateItemQuantity = async (checkoutItemId, quantity) => {
+    const lineItemsToUpdate = [
+      {
+        id: checkoutItemId,
+        quantity: parseInt(quantity),
+      },
+    ];
+    const checkout = await client.checkout.updateLineItems(
+      this.state.checkout.id,
+      lineItemsToUpdate
+    );
+    this.setState({ checkout: checkout });
+    console.log("updated", checkout);
+  };
   closeCart = () => {
     this.setState({ isCartOpen: false });
   };
@@ -77,6 +102,8 @@ class ShopProvider extends Component {
       <ShopContext.Provider
         value={{
           ...this.state,
+          removeLineItem: this.removeLineItem,
+          updateItemQuantity: this.updateItemQuantity,
           closeCart: this.closeCart,
           openCart: this.openCart,
           getProducts: this.getProducts,

@@ -1,23 +1,3 @@
-interface faqType{
-    question: string,
-    answer: string
-}
-
-interface linkProps{
-    href: string,
-    target: string,
-    className: string,
-    style: any,
-    isLocal: boolean
-}
-
-interface reviewType{
-    title: string,
-    desc: string,
-    name: string,
-    role: string
-}
-
 interface productType{
     description: string,
     handle: string,
@@ -43,6 +23,11 @@ interface optionType{
 interface optionValueType {value: string}
 
 interface variantType{
+            product: {
+                handle: string,
+                id: string
+            },
+            title: string,
             price: {
                 amount: string,
                 currencyCode: string
@@ -64,3 +49,28 @@ interface variantType{
             id: string,
             src: string
         }
+
+interface cartType{
+    id: string,
+    lineItems: lineItemType[],
+    lineItemsSubtotalPrice: {
+        amount: string,
+        currencyCode: string,
+    },
+    paymentDue: {
+        amount: string,
+        currencyCode: string,
+    },
+    subtotalPrice: {
+        amount: string,
+        currencyCode: string,
+    },
+    webUrl: string
+}
+
+interface lineItemType{
+    id: string,
+    title: string,
+    quantity: number,
+    variant: variantType
+}

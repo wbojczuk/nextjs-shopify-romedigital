@@ -1,0 +1,121 @@
+.cartItem{
+    position: relative;
+    margin: 1.5vw 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.img{
+    display: inline-block;
+    width: 40%;
+    aspect-ratio: 1/1;
+    position: relative;
+    margin-right: 5%;
+}
+
+.img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.text{
+    display: inline-block;
+    width: 40%;
+}
+
+.title{
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.variant{
+    margin-top: 0.2vw;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.numberInput input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+  
+  .numberInput input[type=number]::-webkit-inner-spin-button,
+  .numberInput input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+  
+  .numberInput {
+    display: inline-flex;
+    margin-top: 0.5vw;
+  }
+  
+  .numberInput,
+  .numberInput * {
+    box-sizing: border-box;
+  }
+  
+  .numberInput button {
+    outline:none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    width: 2vw;
+    height: 2vw;
+    cursor: pointer;
+    margin: 0;
+    position: relative;
+    border: 1px solid var(--disabled-grey);
+    outline: 1px solid transparent !important;
+  }
+  
+  .numberInput button:after {
+    display: inline-block;
+    position: absolute;
+    font-weight:500;
+    content: '-';
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+  }
+
+  .numberInput button.plus:after {
+    transform: translate(-50%, -50%);
+    content: '+';
+  }
+
+  .minus{
+    border-right: none !important;
+  }
+
+  .elemDisabled{
+    color: var(--disabled-grey) !important;
+    pointer-events: none;
+    border-color: var(--disabled-grey);
+  }
+
+  .plus{
+    border-left: none !important;
+  }
+  
+  .numberInput input[type=number] {
+    font-size: 1.2rem;
+    border: 1px solid var(--disabled-grey) !important;
+    border-left: none !important;
+    border-right: none !important;
+    outline: 1px solid transparent !important;
+    color: var(--primary-text-color);
+    text-align: center;
+    width: 2vw;
+    height: 2vw;
+  }
+
+  .price{
+    width: 100%;
+    padding-right: 2vw;
+    text-align: right;
+  }
