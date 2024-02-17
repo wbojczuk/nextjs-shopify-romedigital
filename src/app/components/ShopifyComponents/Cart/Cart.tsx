@@ -5,10 +5,12 @@ import formatCurrency from "@/app/shopify/formatCurrency"
 import styles from "./cart.module.css"
 import { ShopContext } from "@/app/shopify/shopContext"
 import CartItem from "./CartItem/CartItem"
+import { usePathname } from "next/navigation"
 import gsap from "gsap"
 
 export default function Cart() {
 
+    const pathName = usePathname()
     const [isUpdating, setIsUpdating] = useState(false)
 
     const sideBarRef: any = useRef()
@@ -42,6 +44,15 @@ export default function Cart() {
 
     }   
     }, [checkout])
+
+
+
+    // --------------- HOOKS
+
+    // On Route/Path Change
+    useEffect(()=>{
+        closeCart()
+    }, [pathName])
 
 
     // --------------- Helper Functions
