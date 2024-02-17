@@ -12,7 +12,9 @@ export default function Cart() {
     const [isUpdating, setIsUpdating] = useState(false)
 
     const sideBarRef: any = useRef()
+    const cartShaderRef: any = useRef()
 
+    const [checkoutUrl, setCheckoutUrl] = useState("")
     const [subtotal, setSubtotal] = useState("$0.00")
 
     const {checkout}: {checkout: cartType} = useContext(ShopContext)
@@ -36,6 +38,8 @@ export default function Cart() {
         setIsFilled(checkout.lineItems.length > 0)
         setItems(checkout.lineItems)
         setSubtotal(formatCurrency(checkout.subtotalPrice.amount, checkout.subtotalPrice.currencyCode))
+        setCheckoutUrl(checkout.webUrl)
+
     }   
     }, [checkout])
 
@@ -48,6 +52,13 @@ export default function Cart() {
             duration: 0.5,
             ease: "power3.inOut"
         })
+
+        cartShaderRef.current.style.visibility = "visible"
+        gsap.to(cartShaderRef.current,{
+            opacity: 1,
+            duration: 0.5,
+            ease: "power3.inOut"
+        })
     }
 
     function closeCart(){
@@ -55,6 +66,13 @@ export default function Cart() {
             x: "110%",
             duration: 0.4,
             ease: "power3.inOut"
+        })
+
+        gsap.to(cartShaderRef.current,{
+            opacity: 0,
+            duration: 0.4,
+            ease: "power3.inOut",
+            onComplete: ()=>{cartShaderRef.current.style.visibility = "hidden"}
         })
     }
 
@@ -65,6 +83,7 @@ export default function Cart() {
 
   return (
     <>
+        <div ref={cartShaderRef} onClick={closeCart} className={styles.cartShader}></div>
         <div onClick={openCart} className={`${styles.cartIcon} ${(isFilled) ? styles.filled : ""}`}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path fill="black" d="M25 12V9.05a7 7 0 1 0-14 0v7a1 1 0 0 0 2 0V14h8v-2h-8V9.05a5 5 0 1 1 10 0V16a1 1 0 1 0 2 0v-2h5v18H6V14h3v-2H4v20.09A1.91 1.91 0 0 0 5.91 34h24.18A1.91 1.91 0 0 0 32 32.09V12Z" className="clr-i-outline clr-i-outline-path-1"></path><path fill="none" d="M0 0h36v36H0z"></path></svg>
         </div>
@@ -78,14 +97,15 @@ export default function Cart() {
             </div>
 
             <div className={styles.cartContent}>
-                {(isUpdating) && <div className={styles.updating}></div>}
+                
                 {lineItemElems}
                 <div className={styles.payment}>
                 <div className={styles.divider}></div>
                 <h3 className={styles.subtotal}><span>Subtotal:</span><span>{subtotal}</span></h3>
+                <a className={`${styles.checkoutLink} ${(isUpdating) ? styles.elemDisabled : ""}`} href={checkoutUrl}>Checkout</a>
             </div>
             </div>
-            
+            {(isUpdating) && <div className={styles.updating}></div>}
         </div>
     </>
   )

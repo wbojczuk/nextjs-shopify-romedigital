@@ -6,6 +6,10 @@
     align-items: flex-start;
 }
 
+.cartItem:nth-child(1){
+  margin: 0 0 1.5vw 0;
+}
+
 .img{
     display: inline-block;
     width: 40%;
