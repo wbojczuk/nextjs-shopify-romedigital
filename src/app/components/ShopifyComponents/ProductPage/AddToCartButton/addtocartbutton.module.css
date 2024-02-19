@@ -1,3 +1,7 @@
+.buttonWrapper{
+    position: relative;
+    border-radius: 999px;
+}
 .button{
     width: 100%;
     background-color: var(--primary-color);

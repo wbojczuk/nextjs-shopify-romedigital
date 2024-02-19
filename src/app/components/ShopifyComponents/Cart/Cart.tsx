@@ -8,6 +8,7 @@ import CartItem from "./CartItem/CartItem"
 import { usePathname } from "next/navigation"
 import gsap from "gsap"
 import Loading from "../Loading/Loading"
+import Link from "next/link"
 
 export default function Cart() {
 
@@ -108,7 +109,7 @@ export default function Cart() {
                 {(isFilled) && <><div className={styles.divider}></div>
                 <h3 className={styles.subtotal}><span>Subtotal:</span><span>{subtotal}</span></h3>
                 <h6 className={styles.disclaimer}>Shipping & taxes calculated at checkout</h6></>}
-                <a className={`${styles.checkoutLink} ${(isUpdating) ? styles.elemDisabled : ""}`} href={(isFilled) ? checkoutUrl : "/products"}>{(isFilled) ? "Checkout" : "Continue Shopping"}</a>
+                {(isFilled) ? <a className={`${styles.checkoutLink} ${(isUpdating) ? styles.elemDisabled : ""}`} href={checkoutUrl}>Checkout</a> : <Link onClick={closeCart} className={styles.checkoutLink} href="/products">Continue shopping</Link>}
             </div>
             </div>
             {(isUpdating) && <Loading style={{position: "absolute", backgroundColor: "rgba(0,0,0,0.3)"}} />}

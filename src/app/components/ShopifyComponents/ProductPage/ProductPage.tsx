@@ -8,6 +8,7 @@ import { breakpoints } from "./carouselBreakpoints";
 import gsap from "gsap";
 import formatCurrency from "@/app/shopify/formatCurrency";
 import Loading from "../Loading/Loading";
+import Link from "next/link";
 
 
 export default function ProductPage({productHandle} : {productHandle: string}) {
@@ -16,6 +17,7 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
   const qtyElem: any = useRef()
   const sizeElems: any = useRef() 
   const contentRef: any = useRef()
+  const backLinkRef: any = useRef()
   const imagesRef: any = useRef()
   const colorElems: any = useRef() 
   const [optionTypes, setOptionTypes]: [optionTypes: string[], setOptionTypes: any] = useState([]!)
@@ -85,16 +87,18 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
     function animateContentIn(){
       const tl = gsap.timeline({defaults:{ duration: 0.4, ease: "power3.inOut"}})
 
-      tl.to(imagesRef.current,{
+      tl.to(backLinkRef.current, {
+        opacity: 1,
+        x: 0
+      })
+      .to(imagesRef.current,{
         opacity: 1,
         y: 0
-      })
+      }, "-=0.3")
       .to(contentRef.current, {
         opacity: 1,
         y: 0
-      }, "-=0.2")
-
-      
+      }, "-=0.3")
     }
 
     
@@ -355,8 +359,9 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
     }
 
   return (
-
+  <>
     <div className={styles.productPage}>
+    <Link ref={backLinkRef} className={styles.backArrow} href="/products"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#aaa" d="M20 11v2H8l5.5 5.5l-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5L8 11z"></path></svg> Back To Products</Link>
     {(isLoading) && <Loading />}
     {(!isLoading) &&
     <>
@@ -409,6 +414,7 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
 </>
 }
     </div>
+  </>
 
   
   )

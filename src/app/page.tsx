@@ -1,7 +1,7 @@
 import AppWrapper from "./components/AppWrapper"
-import GetData from "./components/GetData"
+import ProductListings from "./components/ShopifyComponents/ProductListings/ProductListings"
 export default function page() {
   return (
-        <GetData />
+        <ProductListings />
   )
 }

@@ -2,6 +2,7 @@
 import { useContext, useRef, useState } from "react"
 import { ShopContext } from "@/app/shopify/shopContext"
 import styles from "./addtocartbutton.module.css"
+import Loading from "../../Loading/Loading"
 
 
 export default function AddToCartButton(props:{variantID: string, qty: number, available: boolean, currentSize: string, currentColor: string}) {
@@ -32,6 +33,9 @@ export default function AddToCartButton(props:{variantID: string, qty: number, a
     }
 
   return (
-    <button ref={buttonRef} className={`${styles.button} ${(addingState) ? styles.adding : ""} ${(props.available) ? "" : styles.soldOut}`} onClick={(props.available) ? buttonHandler : ()=>{}}>{(props.available) ? (addingState) ? "Adding" : "Add to cart" : "Sold out"}</button>
+    <div className={styles.buttonWrapper}>
+      {(addingState) && <Loading style={{position: "absolute"}} />}
+      <button ref={buttonRef} className={`${styles.button} ${(addingState) ? styles.adding : ""} ${(props.available) ? "" : styles.soldOut}`} onClick={(props.available) ? buttonHandler : ()=>{}}>{(props.available) ? (addingState) ? "Adding" : "Add to cart" : "Sold out"}</button>
+    </div>
   )
 }

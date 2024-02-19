@@ -8,6 +8,8 @@
     text-decoration: none;
     font-family: var(--secondary-font);
     padding-bottom: 1vw;
+    opacity: 0;
+    transform: translateY(-20px);
 }   
 
 .coverImgWrapper{

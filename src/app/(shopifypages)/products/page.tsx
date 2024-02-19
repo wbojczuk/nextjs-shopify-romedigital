@@ -1,5 +1,5 @@
 import AppWrapper from "@/app/components/AppWrapper"
-import GetData from "@/app/components/GetData"
+import ProductListings from "@/app/components/ShopifyComponents/ProductListings/ProductListings"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -9,6 +9,6 @@ export const metadata: Metadata = {
   
 export default function page() {
   return (
-        <GetData />
+        <ProductListings />
   )
 }

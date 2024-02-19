@@ -4,6 +4,7 @@ const ShopContext = React.createContext();
 
 class ShopProvider extends Component {
   state = {
+    // collections: [],
     products: [],
     product: {},
     checkout: {},
@@ -11,6 +12,7 @@ class ShopProvider extends Component {
   };
   componentDidMount() {
     this.setProducts()
+    // this.setCollections()
     if (localStorage.checkout_id) {
       this.fetchCheckout(localStorage.checkout_id);
     } else {
@@ -22,6 +24,13 @@ class ShopProvider extends Component {
     const products = client.product.fetchAll()
     return products
   }
+
+  // ------- Set collections (if using)
+  // 
+  // setCollections = async () => {
+  //   const collections = await client.collection.fetchAllWithProducts()
+  //   this.setState({ collections: collections });
+  // }
 
   setProducts = async () => {
     const products = await this.getProducts()

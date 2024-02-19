@@ -27,7 +27,7 @@
 
 .text{
     display: inline-block;
-    width: 50%;
+    width: 45%;
 }
 
 .title{
@@ -117,9 +117,25 @@
     width: 2vw;
     height: 2vw;
   }
-
-  .price{
+  .priceAndClose{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding-top: 1vw;
-    width: 100%;
-    text-align: right;
+  }
+  .price{
+    
+  }
+
+  .removeAll{
+    width: 15%;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .removeAll svg{
+    object-fit: contain;
+    object-position: center;
   }
