@@ -163,11 +163,13 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
       if(product != null){
         setIsLoading(false)
       }
+    }, [product])
 
+    useEffect(()=>{
       if(contentRef.current !== undefined){
         animateContentIn()
       }
-    }, [product])
+    }, [contentRef.current])
 
 
     useEffect(()=>{
