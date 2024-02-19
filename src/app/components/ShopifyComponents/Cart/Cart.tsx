@@ -7,6 +7,7 @@ import { ShopContext } from "@/app/shopify/shopContext"
 import CartItem from "./CartItem/CartItem"
 import { usePathname } from "next/navigation"
 import gsap from "gsap"
+import Loading from "../Loading/Loading"
 
 export default function Cart() {
 
@@ -19,7 +20,7 @@ export default function Cart() {
     const [checkoutUrl, setCheckoutUrl] = useState("")
     const [subtotal, setSubtotal] = useState("$0.00")
 
-    const {checkout}: {checkout: cartType} = useContext(ShopContext)
+    const {checkout, isCartOpen, openCart, closeCart}: {checkout: cartType, isCartOpen: boolean, openCart: any, closeCart: any} = useContext(ShopContext)
 
     const [items, setItems]: [items: lineItemType[], setItems: any] = useState([]!)
 
@@ -54,43 +55,36 @@ export default function Cart() {
         closeCart()
     }, [pathName])
 
-
-    // --------------- Helper Functions
-
-    function openCart(){
-        gsap.to(sideBarRef.current, {
-            x: 0,
-            duration: 0.5,
-            ease: "power3.inOut"
-        })
-
-        cartShaderRef.current.style.visibility = "visible"
-        gsap.to(cartShaderRef.current,{
-            opacity: 1,
-            duration: 0.5,
-            ease: "power3.inOut"
-        })
-    }
-
-    function closeCart(){
-        gsap.to(sideBarRef.current, {
-            x: "110%",
-            duration: 0.4,
-            ease: "power3.inOut"
-        })
-
-        gsap.to(cartShaderRef.current,{
-            opacity: 0,
-            duration: 0.4,
-            ease: "power3.inOut",
-            onComplete: ()=>{cartShaderRef.current.style.visibility = "hidden"}
-        })
-    }
-
-
-    // --------------- Event Handlers
-
+    useEffect(()=>{
+        if(isCartOpen){
+            gsap.to(sideBarRef.current, {
+                x: 0,
+                duration: 0.5,
+                ease: "power3.inOut"
+            })
     
+            cartShaderRef.current.style.visibility = "visible"
+            gsap.to(cartShaderRef.current,{
+                opacity: 1,
+                duration: 0.5,
+                ease: "power3.inOut"
+            })
+        }else{
+            gsap.to(sideBarRef.current, {
+                x: "110%",
+                duration: 0.4,
+                ease: "power3.inOut"
+            })
+    
+            gsap.to(cartShaderRef.current,{
+                opacity: 0,
+                duration: 0.4,
+                ease: "power3.inOut",
+                onComplete: ()=>{cartShaderRef.current.style.visibility = "hidden"}
+            })
+        }
+    }, [isCartOpen])
+
 
   return (
     <>
@@ -113,10 +107,11 @@ export default function Cart() {
                 <div className={styles.payment}>
                 <div className={styles.divider}></div>
                 <h3 className={styles.subtotal}><span>Subtotal:</span><span>{subtotal}</span></h3>
+                <h6 className={styles.disclaimer}>Shipping & taxes calculated at checkout</h6>
                 <a className={`${styles.checkoutLink} ${(isUpdating) ? styles.elemDisabled : ""}`} href={checkoutUrl}>Checkout</a>
             </div>
             </div>
-            {(isUpdating) && <div className={styles.updating}></div>}
+            {(isUpdating) && <Loading style={{position: "absolute", backgroundColor: "rgba(0,0,0,0.3)"}} />}
         </div>
     </>
   )

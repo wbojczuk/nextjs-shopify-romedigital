@@ -1,4 +1,5 @@
 .listings{
+    position: relative;
     display: inline-flex;
     flex-wrap: wrap;
     width: 80%;

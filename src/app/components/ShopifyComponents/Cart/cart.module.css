@@ -127,17 +127,24 @@
 .checkoutLink:hover{
     filter: brightness(80%);
 }
-  .elemDisabled{
-    color: white !important;
-    pointer-events: none;
-    border-color: var(--disabled-grey);
-    background-color: var(--disabled-grey);
-  }
+.elemDisabled{
+  color: white !important;
+  pointer-events: none;
+  border-color: var(--disabled-grey);
+  background-color: var(--disabled-grey);
+}
 
-  .subtotal{
-    font-weight: 500;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+.subtotal{
+  font-weight: 500;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.disclaimer{
+  font-weight: 300;
+  margin-top: 1vw;
+  width: 100%;
+  text-align: center;
+}

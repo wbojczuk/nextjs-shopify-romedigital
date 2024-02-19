@@ -1,4 +1,5 @@
 interface productType{
+    availableForSale: boolean,
     description: string,
     handle: string,
     variants: variantType[],
@@ -23,32 +24,31 @@ interface optionType{
 interface optionValueType {value: string}
 
 interface variantType{
-            product: {
-                handle: string,
-                id: string
-            },
-            title: string,
-            price: {
-                amount: string,
-                currencyCode: string
-            },
-            selectedOptions: selectedOptionType[],
-            compareAtPrice: {
-                amount: string,
-                currencyCode: string
-            } | undefined,
-            title: string,
-            id: string,
-            available: boolean,
-            image: imageType
-        }
+    product: {
+        handle: string,
+        id: string
+    },
+    title: string,
+    price: {
+        amount: string,
+        currencyCode: string
+    },
+    selectedOptions: selectedOptionType[],
+    compareAtPrice: {
+        amount: string,
+        currencyCode: string
+    } | undefined,
+    title: string,
+    id: string,
+    available: boolean,
+    image: imageType
+}
     
-
-        interface imageType{
-            altText: string,
-            id: string,
-            src: string
-        }
+interface imageType{
+    altText: string,
+    id: string,
+    src: string
+}
 
 interface cartType{
     id: string,

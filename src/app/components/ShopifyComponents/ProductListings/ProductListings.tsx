@@ -2,6 +2,7 @@
 
 import styles from "./productlistings.module.css"
 import ProductCard from "../ProductCard/ProductCard"
+import Loading from "../Loading/Loading"
 import { useEffect, useState } from "react"
 
 export default function ProductListings(props: {products: []}) {
@@ -22,7 +23,7 @@ export default function ProductListings(props: {products: []}) {
 
   return (
     <section className={styles.listings}>
-        {isLoading && <div>Loading...</div>}
+        {isLoading && <Loading />}
         {productCardElems}
     </section>
   )

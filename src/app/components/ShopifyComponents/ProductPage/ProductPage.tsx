@@ -5,6 +5,9 @@ import { useContext, useEffect, useRef, useState } from "react"
 import { ShopContext } from "@/app/shopify/shopContext";
 import Carousel from "react-multi-carousel";
 import { breakpoints } from "./carouselBreakpoints";
+import gsap from "gsap";
+import formatCurrency from "@/app/shopify/formatCurrency";
+import Loading from "../Loading/Loading";
 
 
 export default function ProductPage({productHandle} : {productHandle: string}) {
@@ -12,6 +15,8 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
   const isSelectOpen: any = useRef()
   const qtyElem: any = useRef()
   const sizeElems: any = useRef() 
+  const contentRef: any = useRef()
+  const imagesRef: any = useRef()
   const colorElems: any = useRef() 
   const [optionTypes, setOptionTypes]: [optionTypes: string[], setOptionTypes: any] = useState([]!)
 
@@ -67,19 +72,29 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
 
 
     function setThePrice(productData: productType, variant: number = 0){
-      const compareAtPrice = (productData.variants[variant].compareAtPrice != undefined) ? parseFloat(productData.variants[variant].compareAtPrice!.amount).toLocaleString("en-US",
-      {
-          style: 'currency',
-          currency: productData.variants[variant].compareAtPrice!.currencyCode,
-      }) : undefined
+
+      const compareAtPrice = (productData.variants[variant].compareAtPrice != undefined) ? formatCurrency(productData.variants[variant].compareAtPrice!.amount, productData.variants[variant].compareAtPrice!.currencyCode) : undefined
   
-      const price = parseFloat(productData.variants[variant].price.amount).toLocaleString("en-US",
-      {
-          style: 'currency',
-          currency: productData.variants[variant].price.currencyCode,
-      })
+      const price = formatCurrency(productData.variants[variant].price.amount, productData.variants[variant].price.currencyCode)
 
       setPrice( <span className={styles.price}>{price} {(compareAtPrice != undefined) ? <span className={styles.oldPrice}>{compareAtPrice}</span> : <></>}</span>)
+    }
+
+    // ------ Helper Functions
+
+    function animateContentIn(){
+      const tl = gsap.timeline({defaults:{ duration: 0.4, ease: "power3.inOut"}})
+
+      tl.to(imagesRef.current,{
+        opacity: 1,
+        y: 0
+      })
+      .to(contentRef.current, {
+        opacity: 1,
+        y: 0
+      }, "-=0.2")
+
+      
     }
 
     
@@ -144,7 +159,12 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
       if(product != null){
         setIsLoading(false)
       }
+
+      if(contentRef.current !== undefined){
+        animateContentIn()
+      }
     }, [product])
+
 
     useEffect(()=>{
       if(product != null){
@@ -197,10 +217,10 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
           //@ts-ignore
           if(colorAvailability[elem.value]){
             //@ts-ignore
-            elem.parentElement.classList.remove(styles.elemDisabled)
+            elem.parentElement.classList.remove(styles.notAvailable)
           }else{
             //@ts-ignore
-            elem.parentElement.classList.add(styles.elemDisabled)
+            elem.parentElement.classList.add(styles.notAvailable)
           }
         })
 
@@ -210,10 +230,10 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
           //@ts-ignore
           if(compatibleSizes.includes(elem.value) && sizeAndColorAvailibility[elem.value]){
             //@ts-ignore
-            elem.parentElement.classList.remove(styles.elemDisabled)
+            elem.parentElement.classList.remove(styles.notAvailable)
           }else{
             //@ts-ignore
-            elem.parentElement.classList.add(styles.elemDisabled)
+            elem.parentElement.classList.add(styles.notAvailable)
           }
         })
         
@@ -239,10 +259,10 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
           //@ts-ignore
           if(colorAvailability[elem.value]){
             //@ts-ignore
-            elem.parentElement.classList.remove(styles.elemDisabled)
+            elem.parentElement.classList.remove(styles.notAvailable)
           }else{
             //@ts-ignore
-            elem.parentElement.classList.add(styles.elemDisabled)
+            elem.parentElement.classList.add(styles.notAvailable)
           }
         })
       }
@@ -289,10 +309,10 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
       //@ts-ignore
       if(sizeAvailability[elem.value]){
         //@ts-ignore
-        elem.parentElement.classList.remove(styles.elemDisabled)
+        elem.parentElement.classList.remove(styles.notAvailable)
       }else{
         //@ts-ignore
-        elem.parentElement.classList.add(styles.elemDisabled)
+        elem.parentElement.classList.add(styles.notAvailable)
       }
     })
   }
@@ -335,12 +355,12 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
     }
 
   return (
-    <>
-    {(isLoading) && <div>Loading...</div>}
 
-    {(!isLoading) && 
     <div className={styles.productPage}>
-      <div className={styles.images}>
+    {(isLoading) && <Loading />}
+    {(!isLoading) &&
+    <>
+      <div className={styles.images} ref={imagesRef}>
         <img src={mainImg.src} alt={mainImg.altText} className={styles.mainImg} />
         <div className={styles.imgCarousel}>
           <Carousel
@@ -353,7 +373,7 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
           </Carousel>
         </div>
       </div>
-      <div className={styles.content}>
+      <div className={styles.content} ref={contentRef}>
         <h1 className={styles.title}>{product.title}</h1>
         <p className={styles.description}>{product.description}</p>
         {price}
@@ -386,8 +406,10 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
 
            
       </div>
+</>
+}
     </div>
-    }
-    </>
+
+  
   )
 }

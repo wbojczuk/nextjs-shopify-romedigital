@@ -11,6 +11,8 @@
     width: 55%;
     position: relative;
     display: inline-block;
+    opacity: 0;
+    transform: translateY(50px);
 }
 
 .mainImg{
@@ -41,6 +43,8 @@
 .content{
     width: 40%;
     --vertical-padding: 0.5vw;
+    opacity: 0;
+    transform: translateY(-50px);
 }
 
 .title{
@@ -89,7 +93,14 @@
     border: 1px solid var(--primary-text-color);
 }
 
-.elemDisabled .optionLabel{
+.notAvailable .optionLabel{
+    border-color: var(--disabled-grey);
+    /* text-decoration: line-through; */
+    color: var(--disabled-grey);
+}
+
+.notAvailable{
+    pointer-events: none;
     border-color: var(--disabled-grey);
 }
 

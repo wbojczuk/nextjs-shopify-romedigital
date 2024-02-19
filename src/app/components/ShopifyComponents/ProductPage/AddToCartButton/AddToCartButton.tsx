@@ -7,7 +7,7 @@ import styles from "./addtocartbutton.module.css"
 export default function AddToCartButton(props:{variantID: string, qty: number, available: boolean, currentSize: string, currentColor: string}) {
 
   const buttonRef: any = useRef()
-    const {addItemToCheckout} = useContext(ShopContext)
+    const {addItemToCheckout, openCart} = useContext(ShopContext)
     const [addingState, setAddingState] = useState(false)
     const adding: any = useRef()
     adding.current = false;
@@ -21,6 +21,7 @@ export default function AddToCartButton(props:{variantID: string, qty: number, a
             await addItemToCheckout(props.variantID, props.qty)
             adding.current = false;
             setAddingState(false)
+            openCart()
           }
         }else{
           alert("Select a size")
@@ -31,6 +32,6 @@ export default function AddToCartButton(props:{variantID: string, qty: number, a
     }
 
   return (
-    <button ref={buttonRef} className={`${styles.button} ${(addingState) ? styles.adding : ""} ${(props.available) ? "" : styles.soldOut}`} onClick={(props.available) ? buttonHandler : ()=>{}}>{(props.available) ? "Add to cart" : "Sold out"}</button>
+    <button ref={buttonRef} className={`${styles.button} ${(addingState) ? styles.adding : ""} ${(props.available) ? "" : styles.soldOut}`} onClick={(props.available) ? buttonHandler : ()=>{}}>{(props.available) ? (addingState) ? "Adding" : "Add to cart" : "Sold out"}</button>
   )
 }
