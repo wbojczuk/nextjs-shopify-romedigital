@@ -148,3 +148,9 @@
   width: 100%;
   text-align: center;
 }
+
+.emptyCart{
+  text-align: center;
+  font-size: 2rem;
+  padding: 2vw 0;
+}

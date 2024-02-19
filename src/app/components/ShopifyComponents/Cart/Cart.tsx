@@ -102,7 +102,7 @@ export default function Cart() {
             </div>
 
             <div className={styles.cartContent}>
-                {(!isFilled) && <h2 className={styles.emptyCart}>You're Cart Is Empty</h2>}
+                {(!isFilled) && <h2 className={styles.emptyCart}>Your cart is empty</h2>}
                 {lineItemElems}
                 <div className={styles.payment}>
                 {(isFilled) && <><div className={styles.divider}></div>
