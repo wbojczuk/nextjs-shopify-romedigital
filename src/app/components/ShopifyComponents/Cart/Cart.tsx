@@ -102,13 +102,13 @@ export default function Cart() {
             </div>
 
             <div className={styles.cartContent}>
-                
+                {(!isFilled) && <h2 className={styles.emptyCart}>You're Cart Is Empty</h2>}
                 {lineItemElems}
                 <div className={styles.payment}>
-                <div className={styles.divider}></div>
+                {(isFilled) && <><div className={styles.divider}></div>
                 <h3 className={styles.subtotal}><span>Subtotal:</span><span>{subtotal}</span></h3>
-                <h6 className={styles.disclaimer}>Shipping & taxes calculated at checkout</h6>
-                <a className={`${styles.checkoutLink} ${(isUpdating) ? styles.elemDisabled : ""}`} href={checkoutUrl}>Checkout</a>
+                <h6 className={styles.disclaimer}>Shipping & taxes calculated at checkout</h6></>}
+                <a className={`${styles.checkoutLink} ${(isUpdating) ? styles.elemDisabled : ""}`} href={(isFilled) ? checkoutUrl : "/products"}>{(isFilled) ? "Checkout" : "Continue Shopping"}</a>
             </div>
             </div>
             {(isUpdating) && <Loading style={{position: "absolute", backgroundColor: "rgba(0,0,0,0.3)"}} />}
