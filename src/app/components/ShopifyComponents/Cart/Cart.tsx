@@ -102,7 +102,7 @@ export default function Cart() {
                 </div>
             </div>
 
-            <div className={styles.cartContent}>
+            <div style={{filter: (isUpdating) ? "blur(4px)" : "none"}} className={styles.cartContent}>
                 {(!isFilled) && <h2 className={styles.emptyCart}>Your cart is empty</h2>}
                 {lineItemElems}
                 <div className={styles.payment}>
@@ -112,7 +112,7 @@ export default function Cart() {
                 {(isFilled) ? <a className={`${styles.checkoutLink} ${(isUpdating) ? styles.elemDisabled : ""}`} href={checkoutUrl}>Checkout</a> : <Link onClick={closeCart} className={styles.checkoutLink} href="/products">Continue shopping</Link>}
             </div>
             </div>
-            {(isUpdating) && <Loading style={{position: "absolute", backgroundColor: "rgba(0,0,0,0.3)"}} />}
+            {(isUpdating) && <Loading style={{position: "absolute"}} />}
         </div>
     </>
   )
