@@ -115,52 +115,6 @@
     display: inline-block;
 }
 
-/* Select Input Styles */
-
-.content select{
-    position: relative;
-    width: 100% !important;
-    -moz-appearance:none; /* Firefox */
-    -webkit-appearance:none; /* Safari and Chrome */
-    appearance:none;
-}
-.content div[data-class="select"]{
-    position: relative;
-    display: inline-block;
-    width: 60%;
-}
-.content div[data-class="select"]::after{
-    content: "";
-    display: inline-block;
-    position: absolute;
-    right: 2%;
-    top:25%;
-    height: 50%;
-    aspect-ratio: 1/1;
-    background-image: url("/icons/caret-down.svg");
-    pointer-events: none;
-    background-size: 100%;
-    background-position: center;
-    transition: 0.3s transform;
-}
-
-.content div[data-class="select"]:has(select[data-isopen="true"])::after{
-    transform: rotate(180deg);
-}
-
-.content select{
-    display: inline-block;
-    position: relative;
-    width: 50%;
-    padding: 0.8vw 5% !important;
-    margin-top: 0.2vw;
-    margin-bottom: var(--vertical-padding) 0;
-    border: 1px solid var(--disabled-grey) !important;
-    outline: 1px solid transparent !important;
-    border-radius: 10px;
-    color: var(--primary-text-color);
-}
-
 .content input:not(input[type='submit']):not(input[type='hidden']):focus, .content textarea:focus, .content select:focus, .numberInput button:focus{
     border: 1px solid var(--primary-color) !important;
     outline: 1px solid var(--primary-color) !important;
@@ -398,7 +352,7 @@
 
 .content{
     --vertical-padding: 1vw;
-    width: 90%;
+    width: 95%;
 }
 
 .title{
