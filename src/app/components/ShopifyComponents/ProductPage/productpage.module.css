@@ -184,6 +184,7 @@
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
     appearance: textfield;
+    border-radius: 0px;
   }
   
   .numberInput input[type=number]::-webkit-inner-spin-button,
@@ -193,6 +194,7 @@
   
   .numberInput {
     display: inline-flex;
+    
   }
   
   .numberInput,
@@ -214,6 +216,7 @@
     position: relative;
     border: 1px solid var(--disabled-grey);
     outline: 1px solid transparent !important;
+    color: var(--primary-text-color);
   }
   
   .numberInput button:after {
@@ -283,3 +286,178 @@
   .backArrow svg path{
     fill: var(--primary-color);
   }
+
+  /* TABLET STYLES */
+@media only screen and (min-width: 650px) and (max-width: 990px){
+  .productPage{
+    width: 80%;
+    margin: 0 10%;
+    padding: 5vw 0;
+}
+
+.images{
+    width: 50%;
+}
+
+.imgCarousel{
+    height: 15vw;
+    margin-top: 0.5vw;
+}
+.imgCarousel img{
+    height: 12vw;
+}
+
+.content{
+    --vertical-padding: 1vw;
+    width: 45%;
+}
+
+.title{
+    font-size: 3.2rem;
+    margin-top: 3vw !important;
+}
+
+.description{
+    font-size: 1.4rem;
+    margin-top: 1.5vw;
+    line-height: 2.4rem;
+}
+
+.price{
+    font-size: 2.2rem;
+    margin-top: 2vw;
+}
+
+.oldPrice{
+    margin-left: 0.4vw;
+    font-size: 1.6rem;
+}
+
+.optionLabel{
+    padding: 0.8vw 2vw !important;
+    font-size: 1.1rem;
+}
+
+
+
+.content label:not(.optionLabel){
+    padding-top: 2vw;
+    font-size: 1.2rem;
+    padding-bottom: 1vw;
+
+}
+
+.numberInput {
+  margin-top: 1vw;
+}
+
+.numberInput button {
+  width: 3.5vw;
+  height: 3.5vw;
+}
+
+.numberInput button:after {
+  font-size: 1.6rem;
+}
+
+.numberInput input[type=number] {
+  font-size: 1.3rem;
+  width: 3.5vw;
+  height: 3.5vw;
+}
+  .backArrow{
+    font-size: 1.4rem;
+  }
+  .backArrow svg{
+    width: 3vw;
+  }
+}
+ 
+/* MOBILE STYLES */
+@media only screen and (max-width: 649px){
+  .productPage{
+    width: 80%;
+    margin: 0 10%;
+    padding: 10vw 0;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.images{
+    width: 100%;
+}
+
+.imgCarousel{
+    height: 20vw;
+    margin-top: 1vw;
+}
+.imgCarousel img{
+    height: 20vw;
+}
+
+.content{
+    --vertical-padding: 1vw;
+    width: 90%;
+}
+
+.title{
+    font-size: 3.4rem;
+    margin-top: 5vw !important;
+}
+
+.description{
+    font-size: 1.6rem;
+    margin-top: 3vw;
+    line-height: 2.5rem;
+}
+
+.price{
+    font-size: 2.6rem;
+    margin-top: 3.5vw;
+}
+
+.oldPrice{
+    margin-left: 0.6vw;
+    font-size: 1.8rem;
+}
+
+.optionLabel{
+    padding: 1.4vw 4vw !important;
+    font-size: 1.4rem;
+}
+
+
+
+.content label:not(.optionLabel){
+    padding-top: 3vw;
+    font-size: 1.6rem;
+    padding-bottom: 2vw;
+
+}
+
+.numberInput {
+  margin-top: 1vw;
+}
+
+.numberInput button {
+  width: 8vw;
+  height: 8vw;
+}
+
+.numberInput button:after {
+  font-size: 2rem;
+}
+
+.numberInput input[type=number] {
+  font-size: 1.6rem;
+  width: 8vw;
+  height: 8vw;
+}
+  .backArrow{
+    font-size: 1.6rem;
+  }
+  .backArrow svg{
+    width: 6vw;
+  }
+}

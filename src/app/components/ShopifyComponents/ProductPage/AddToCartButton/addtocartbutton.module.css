@@ -29,3 +29,27 @@
     background-color: var(--disabled-grey);
     cursor:not-allowed;
 }
+
+/* TABLET STYLES */
+@media only screen and (min-width: 650px) and (max-width: 990px){
+    .button{
+        font-size: 1.8rem;
+        padding: 0.8vw 0;
+        margin: 2.5vw 0;
+    }
+}
+ 
+/* MOBILE STYLES */
+@media only screen and (max-width: 649px){
+    .buttonWrapper{
+        display: inline-block;
+        width: 80%;
+        margin-right: 20%;
+    }
+    .button{
+        width: 100%;
+        font-size: 2.2rem;
+        padding: 1.2vw 0;
+        margin: 5vw 0;
+    }
+}

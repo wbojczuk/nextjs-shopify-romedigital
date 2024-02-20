@@ -51,3 +51,49 @@
     text-decoration: line-through;
     opacity: 0.8;
 }
+
+/* TABLET STYLES */
+@media only screen and (min-width: 650px) and (max-width: 990px){
+    .card{
+        width:40%;
+        margin: 1.5vw calc(20% / 4);
+        padding-bottom: 2vw;
+    }   
+    
+    .title{
+        padding: 1.5vw 5% 1vw 5%;
+        font-size: 1.4rem;
+    }
+    
+    .price{
+        font-size: 1.4rem;
+    }
+    
+    .oldPrice{
+        margin-left: 0.4vw;
+        font-size: 1.1rem;
+    }
+}
+ 
+/* MOBILE STYLES */
+@media only screen and (max-width: 649px){
+    .card{
+        width: 45%;
+        margin: 3vw calc(10% / 4);
+        padding-bottom: 4vw;
+    }   
+    
+    .title{
+        padding: 2vw 5% 1.5vw 5%;
+        font-size: 1.4rem;
+    }
+    
+    .price{
+        font-size: 1.4rem;
+    }
+    
+    .oldPrice{
+        margin-left: 0.6vw;
+        font-size: 1.1rem;
+    }
+}

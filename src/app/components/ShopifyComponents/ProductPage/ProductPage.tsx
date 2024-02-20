@@ -1,7 +1,7 @@
 "use client"
 import AddToCartButton from "./AddToCartButton/AddToCartButton";
 import styles from "./productpage.module.css"
-import { useContext, useEffect, useRef, useState } from "react"
+import { isValidElement, useContext, useEffect, useRef, useState } from "react"
 import { ShopContext } from "@/app/shopify/shopContext";
 import Carousel from "react-multi-carousel";
 import { breakpoints } from "./carouselBreakpoints";
@@ -87,15 +87,24 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
     function animateContentIn(){
       const tl = gsap.timeline({defaults:{ duration: 0.4, ease: "power3.inOut"}})
 
-      tl.to(backLinkRef.current, {
+      tl.fromTo(backLinkRef.current, {
+        opacity: 0,
+        x: "20px"
+      },{
         opacity: 1,
         x: 0
       })
-      .to(imagesRef.current,{
+      .fromTo(imagesRef.current,{
+        opacity: 0,
+        y: "50px"
+      },{
         opacity: 1,
         y: 0
       }, "-=0.3")
-      .to(contentRef.current, {
+      .fromTo(contentRef.current,{
+        opacity: 0,
+        y: "-50px"
+      },{
         opacity: 1,
         y: 0
       }, "-=0.3")
@@ -166,10 +175,10 @@ export default function ProductPage({productHandle} : {productHandle: string}) {
     }, [product])
 
     useEffect(()=>{
-      if(contentRef.current !== undefined){
+      if(document.querySelector(`.${styles.content}`)){
         animateContentIn()
       }
-    }, [contentRef.current])
+    }, [isLoading])
 
 
     useEffect(()=>{
